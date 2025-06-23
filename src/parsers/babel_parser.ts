@@ -87,7 +87,8 @@ export const parse = (file: string, data?: string, options?: parser.ParserOption
   // When given a node in the AST, does this represent
   // the start of an it/test block?
   const isAnIt = (name?: string) => {
-    return ['it', 'fit', 'test', 'test_withCleanDB'].includes(name);
+    // The `includes` method on Array is supported since ES7 (ES2016)
+    return name ? ['it', 'fit', 'test', 'test_withCleanDB'].indexOf(name) !== -1 : false;
   };
 
   const isAnDescribe = (name?: string) => {
