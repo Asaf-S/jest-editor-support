@@ -91,7 +91,8 @@ export const parse = (file: string, data?: string, options?: parser.ParserOption
   };
 
   const isAnDescribe = (name?: string) => {
-    return ['describe', 'describe_withCleanDB'].includes(name);
+    // The `includes` method on Array is supported since ES7 (ES2016)
+    return name ? ['describe', 'describe_withCleanDB'].indexOf(name) !== -1 : false;
   };
 
   // When given a node in the AST, does this represent
